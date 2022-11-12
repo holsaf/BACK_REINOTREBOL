@@ -6,8 +6,11 @@ namespace ReinoTrebolApi.Extensiones
     using Microsoft.AspNetCore.Builder;
     using Microsoft.EntityFrameworkCore;
     using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+    using ReinoTrebolApi.Controllers.Mappers;
     using ReinoTrebolApi.Models.Data.DbContext;
     using ReinoTrebolApi.Repository.Solicitud;
+    using ReinoTrebolApi.Services.Mappers;
+    using ReinoTrebolApi.Services.Solicitud;
 
     public static class ServiceCollectionExtensions
     {
@@ -35,7 +38,7 @@ namespace ReinoTrebolApi.Extensiones
             // Configuracion de Auto Mapper 
             var mappingConfig = new MapperConfiguration(mc =>
             {
-                mc.AddProfile(new RepositoryMappingProfile());
+                mc.AddProfile(new ControllerMappingProfile());
                 mc.AddProfile(new ServiceMappingProfile());
 
             });

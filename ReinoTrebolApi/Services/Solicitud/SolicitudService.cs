@@ -1,39 +1,66 @@
-﻿using ReinoTrebolApi.Repository.Solicitud;
+﻿
+
+using AutoMapper;
+using ReinoTrebolApi.Repository.Solicitud;
 
 namespace ReinoTrebolApi.Services.Solicitud
 {
     public class SolicitudService : ISolicitudService
     {
         private readonly ISolicitudRepository solicitudRepository;
-        public Task<Models.Internal.Solicitud> ActualizarEstado(Models.Resource.Solicitud solicitud)
+        private readonly IMapper mapper;
+        public async Task<Models.Internal.Solicitud> ActualizarSolicitud(Models.Internal.Solicitud solicitud)
         {
-            solicitudRepository.ActualizarSolicitud(solicitud);
+            var solicitudMapped = this.mapper.Map<Models.Data.Solicitud>(solicitud);
+            var solicitudUpdated = await this.solicitudRepository.ActualizarSolicitud(solicitudMapped);
+            return  this.mapper.Map<Models.Internal.Solicitud>(solicitudUpdated); 
+        }
+
+        //public Task<Models.Internal.Solicitud> ActualizarEstado (Models.Internal.Solicitud solicitud)
+        //{
             
+        //}
+
+        public async Task<Models.Internal.Solicitud> CargarSolicitud(Models.Internal.Solicitud solicitud , Boolean estado)
+        {
+            var random = new Random();
+            var solicitudMapped = this.mapper.Map<Models.Data.Solicitud>(solicitud);
+            if (estado == true)
+            {
+                solicitudMapped.Estado = Models.Enums.EstadoSolicitud.Aprobada;
+                solicitudMapped.Grimorio = (Models.Enums.GrimorioType)random.Next(1, 5);
+                var solicitudCreated = await this.solicitudRepository.CargarSolicitud(solicitudMapped);
+                return this.mapper.Map<Models.Internal.Solicitud>(solicitudCreated);
+            }
+            else
+            {
+                solicitudMapped.Estado = Models.Enums.EstadoSolicitud.Rechazada;
+                var solicitudRechazada = await this.solicitudRepository.CargarSolicitud(solicitudMapped);
+                return this.mapper.Map<Models.Internal.Solicitud>(solicitudRechazada);
+            }       
         }
 
-        public Task<Models.Internal.Solicitud> ActualizarSolicitud(Models.Data.Solicitud solicitud)
+        //public async Task<Models.Internal.Solicitud> ConsultarAsignacionGrimorio(Guid id)
+        //{
+        //    var solicitudResult = await this.solicitudRepository.ConsultarSolicitud(id);
+        //    return solicitudResult.Grimorio;
+        //}
+
+        public async Task<Models.Internal.Solicitud> ConsultarSolicitud(Guid id)
         {
-            throw new NotImplementedException();
+            var solicitudResult = await this.solicitudRepository.ConsultarSolicitud(id);
+            return this.mapper.Map<Models.Internal.Solicitud>(solicitudResult);
         }
 
-        public Task<Models.Internal.Solicitud> CargarSolicitud(Models.Data.Solicitud solicitud)
+        public async Task<IEnumerable<Models.Internal.Solicitud>> ConsultarSolicitudes()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Models.Internal.Solicitud> ConsultarAsignacionGrimorio(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Models.Internal.Solicitud>> ConsultarSolicitudes()
-        {
-            throw new NotImplementedException();
+            var solicitudesResult = await this.solicitudRepository.ConsultarSolicitudes();
+            return this.mapper.Map<IEnumerable<Models.Data.Solicitud>, IEnumerable<Models.Internal.Solicitud>>(solicitudesResult);
         }
 
         public Task<bool> EliminarSolicitud(Guid id)
         {
-            throw new NotImplementedException();
+            return this.solicitudRepository.EliminarSolicitud(id);
         }
     }
 }

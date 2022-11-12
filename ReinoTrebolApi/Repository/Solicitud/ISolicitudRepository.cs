@@ -11,7 +11,7 @@
 
         Task<IEnumerable<Solicitud>> ConsultarSolicitudes();
 
-        Task<Solicitud> ConsultarAsignacionGrimorio(Guid id);
+        Task<Solicitud> ConsultarSolicitud(Guid id);
 
         Task<Boolean> EliminarSolicitud(Guid id);
    

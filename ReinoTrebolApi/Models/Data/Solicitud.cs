@@ -20,7 +20,7 @@ namespace ReinoTrebolApi.Models.Data
 
         public AfinidadMagica AfinidadMagica { get; set; }
 
-        public string Grimorio { get; set; }
+        public GrimorioType Grimorio { get; set; }
 
 
     }

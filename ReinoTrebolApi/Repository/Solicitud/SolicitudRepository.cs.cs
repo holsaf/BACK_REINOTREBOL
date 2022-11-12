@@ -53,7 +53,7 @@
             }
         }
 
-        public async Task<Solicitud> ConsultarAsignacionGrimorio(Guid id)
+        public async Task<Solicitud> ConsultarSolicitud(Guid id)
         {
             try
             {
