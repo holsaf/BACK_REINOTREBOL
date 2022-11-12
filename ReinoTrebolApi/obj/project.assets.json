@@ -1160,11 +1160,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Developer\\ReinoTrebolApi\\ReinoTrebolApi\\ReinoTrebolApi\\ReinoTrebolApi.csproj",
+      "projectUniqueName": "C:\\Developer\\ReinoTrebolApi\\ReinoDelTrebol\\ReinoTrebolApi\\ReinoTrebolApi.csproj",
       "projectName": "ReinoTrebolApi",
-      "projectPath": "C:\\Developer\\ReinoTrebolApi\\ReinoTrebolApi\\ReinoTrebolApi\\ReinoTrebolApi.csproj",
+      "projectPath": "C:\\Developer\\ReinoTrebolApi\\ReinoDelTrebol\\ReinoTrebolApi\\ReinoTrebolApi.csproj",
       "packagesPath": "C:\\Users\\holtk\\.nuget\\packages\\",
-      "outputPath": "C:\\Developer\\ReinoTrebolApi\\ReinoTrebolApi\\ReinoTrebolApi\\obj\\",
+      "outputPath": "C:\\Developer\\ReinoTrebolApi\\ReinoDelTrebol\\ReinoTrebolApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\holtk\\AppData\\Roaming\\NuGet\\NuGet.Config",

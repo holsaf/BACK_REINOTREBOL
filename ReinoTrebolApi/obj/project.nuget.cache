@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MpUqgINSmztIrnSN5NcjWakDH06laCRNftvvVj61JQKMA1cdMt4F3VyOCuDwGgEyTv7E+7n7Rc8s/Fb2efbOKQ==",
+  "dgSpecHash": "nxL7wU+/XmQjGzi3MINJLuxaIfwTLo2PipxfAr4JbC7wSs4AicN+AhER+NCEKaSilwpVtD92zJ2QUWiFuthKdQ==",
   "success": true,
-  "projectFilePath": "C:\\Developer\\ReinoTrebolApi\\ReinoTrebolApi\\ReinoTrebolApi\\ReinoTrebolApi.csproj",
+  "projectFilePath": "C:\\Developer\\ReinoTrebolApi\\ReinoDelTrebol\\ReinoTrebolApi\\ReinoTrebolApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\holtk\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
