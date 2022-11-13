@@ -9,7 +9,7 @@
 
         //Task<Solicitud> ActualizarEstado(Solicitud solicitud);
 
-        Task<IEnumerable<Solicitud>> ConsultarSolicitudes();
+        Task<List<Solicitud>> ConsultarSolicitudes();
 
         Task<Solicitud> ConsultarSolicitud(Guid id);
 

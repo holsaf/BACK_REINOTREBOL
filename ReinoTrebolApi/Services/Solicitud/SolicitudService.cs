@@ -59,10 +59,10 @@ namespace ReinoTrebolApi.Services.Solicitud
             return this.mapper.Map<Models.Internal.Solicitud>(solicitudResult);
         }
 
-        public async Task<IEnumerable<Models.Internal.Solicitud>> ConsultarSolicitudes()
+        public async Task<List<Models.Internal.Solicitud>> ConsultarSolicitudes()
         {
             var solicitudesResult = await this.solicitudRepository.ConsultarSolicitudes();
-            return this.mapper.Map<IEnumerable<Models.Data.Solicitud>, IEnumerable<Models.Internal.Solicitud>>(solicitudesResult);
+            return this.mapper.Map<List<Models.Data.Solicitud>, List<Models.Internal.Solicitud>>(solicitudesResult);
         }
 
         public Task<bool> EliminarSolicitud(Guid id)

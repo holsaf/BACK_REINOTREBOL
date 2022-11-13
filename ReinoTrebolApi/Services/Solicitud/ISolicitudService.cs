@@ -10,7 +10,7 @@ namespace ReinoTrebolApi.Services.Solicitud
 
         //Task<Solicitud> ActualizarEstado(Solicitud solicitud);
 
-        Task<IEnumerable<Solicitud>> ConsultarSolicitudes();
+        Task<List<Solicitud>> ConsultarSolicitudes();
 
         //Task<Solicitud> ConsultarAsignacionGrimorio(Guid id);
 

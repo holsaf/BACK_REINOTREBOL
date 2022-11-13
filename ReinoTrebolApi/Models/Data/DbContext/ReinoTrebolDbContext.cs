@@ -27,7 +27,7 @@ namespace ReinoTrebolApi.Models.Data.DbContext
             {
                 entity.ToTable("Solicitud");
                 entity.HasKey(id => id.IdSolicitud);
-                entity.HasIndex(entity => new { entity.Identificacion }).IsUnique();
+                //entity.HasIndex(entity => new { entity.Identificacion }).IsUnique();
             });
 
         }

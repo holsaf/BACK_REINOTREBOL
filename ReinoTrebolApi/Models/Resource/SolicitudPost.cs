@@ -6,9 +6,6 @@ namespace ReinoTrebolApi.Models.Resource
 {
     public class SolicitudPost
     {
-        //[MaxLength(20)]
-        //[Required]
-        //[RegularExpression("[a-z]+")]
         public string Nombre { get; set; }
 
         public string Apellido { get; set; }

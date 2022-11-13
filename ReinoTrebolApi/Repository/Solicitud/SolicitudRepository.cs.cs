@@ -3,6 +3,7 @@
     using Microsoft.EntityFrameworkCore;
     using ReinoTrebolApi.Models.Data;
     using ReinoTrebolApi.Models.Data.DbContext;
+    using System.Linq;
 
     public class SolicitudRepository : ISolicitudRepository
     {
@@ -70,11 +71,12 @@
             }
         }
 
-        public async Task<IEnumerable<Solicitud>> ConsultarSolicitudes()
+        public async Task<List<Solicitud>> ConsultarSolicitudes()
         {
             try
             {
-                return this.reinoTrebolDbContext.Solicitud;
+
+                return await this.reinoTrebolDbContext.Solicitud.ToListAsync<Solicitud>();
 
             }
             catch (Exception)
