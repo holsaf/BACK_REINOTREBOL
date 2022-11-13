@@ -3,6 +3,7 @@
     using AutoMapper;
     using FluentValidation;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
@@ -39,6 +40,7 @@
             services.AddScoped<ISolicitudRepository, SolicitudRepository>();
             services.AddScoped<ISolicitudService, SolicitudService>();
             services.AddScoped<IValidator<SolicitudPost>, SolicitudPostValidator>();
+            services.AddScoped<IValidator<JsonPatchDocument<SolicitudPatch>>, SolicitudPatchValidator>();
 
             // Configuracion de Auto Mapper 
             var mappingConfig = new MapperConfiguration(mc =>

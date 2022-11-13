@@ -2,8 +2,12 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using ReinoTrebolApi.Extensiones;
-using ReinoTrebolApi.Formatters;
+using Newtonsoft.Json.Converters;
+using JsonConverter = Newtonsoft.Json.JsonConverter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,28 +27,26 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", info);
 });
 
-builder.Services.AddSwaggerGenNewtonsoftSupport();
-
-builder.Services.AddMvc(options =>
-{
-    options.EnableEndpointRouting = false;
-    options.ReturnHttpNotAcceptable = true;
-    options.InputFormatters.Insert(0, JsonPatchInputFormatter.GetJsonPatchInputFormatter());
-}).AddJsonOptions(options =>
-{
-    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-    options.JsonSerializerOptions.WriteIndented = true;
-    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-});
-
 //Add DB Connection
 builder.Services.AddReinoTrebolDbContext(builder.Configuration.GetConnectionString("ReinoTrebolDatabase"));
 
 // Add config of scoped services and Mappers.
 builder.Services.AddServices();
 
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+    {
+        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        options.SerializerSettings.Converters.Add(new StringEnumConverter());
+    });
 
+builder.Services.AddMvc(options =>
+{
+    options.EnableEndpointRouting = false;
+    options.ReturnHttpNotAcceptable = true;
+});
+
+builder.Services.AddSwaggerGenNewtonsoftSupport();
 
 var app = builder.Build();
 

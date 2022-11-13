@@ -13,23 +13,25 @@
     {
         private readonly ISolicitudService solicitudService;
         private readonly IMapper mapper;
-        private readonly IValidator<SolicitudPost> validator;
+        private readonly IValidator<SolicitudPost> validatorPost;
+        private readonly IValidator<JsonPatchDocument<SolicitudPatch>> validatorPatch;
 
-        public SolicitudController(ISolicitudService solicitudService, IMapper mapper, IValidator<SolicitudPost> validator)
+        public SolicitudController(ISolicitudService solicitudService, IMapper mapper, IValidator<SolicitudPost> validatorPost, IValidator<JsonPatchDocument<SolicitudPatch>> validatorPatch)
         {
             this.solicitudService = solicitudService;
             this.mapper = mapper;
-            this.validator = validator;
+            this.validatorPost = validatorPost;
+            this.validatorPatch = validatorPatch;
         }
 
         [HttpPost(Name = nameof(PostSolicitud))]
         [ProducesResponseType(typeof(Solicitud), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Solicitud), StatusCodes.Status400BadRequest)]
         [Consumes("application/json")]
         [Produces("application/json")]
         public async Task<IActionResult> PostSolicitud([FromBody] SolicitudPost solicitudPost)
         {
-            var validatorResult = this.validator.Validate(solicitudPost);
+            var validatorResult = this.validatorPost.Validate(solicitudPost);
             if (solicitudPost == null)
             {
                 return this.BadRequest();
@@ -58,21 +60,29 @@
             {
                 return this.BadRequest();
             }
+
             var solicitudMapped = this.mapper.Map<Models.Internal.Solicitud>(solicitud);
             var solicitudUpdated = await this.solicitudService.ActualizarSolicitud(solicitudMapped);
             return this.Ok(this.mapper.Map<Solicitud>(solicitudUpdated));
         }
 
-        [HttpPatch("{id}", Name = nameof(PatchEstado))]
+        [HttpPatch("{id}", Name = nameof(PatchSolicitud))]
         [ProducesResponseType(typeof(Solicitud), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Consumes("application/json-patch+json")]
         [Produces("application/json")]
-        public async Task<IActionResult> PatchEstado(Guid id, [FromBody] JsonPatchDocument<SolicitudPatch> solicitudPatch)
+        public async Task<IActionResult> PatchSolicitud(Guid id, [FromBody] JsonPatchDocument<SolicitudPatch> solicitudPatch)
         {
-            if (!this.TryValidateModel(solicitudPatch))
+            var validatorResult = this.validatorPatch.Validate(solicitudPatch);
+            if (!validatorResult.IsValid)
             {
-                return this.BadRequest();
+                return this.BadRequest(validatorResult.Errors);
             }
+
+            //if (!this.TryValidateModel(solicitudPatch))
+            //{
+            //    return this.BadRequest("Objeto invalido");
+            //}
 
             var internalSolicitud = await this.solicitudService.ConsultarSolicitud(id);
             var baseSolicitudPatch = this.mapper.Map<Models.Resource.SolicitudPatch>(internalSolicitud);
@@ -82,7 +92,8 @@
             }
             catch (Exception)
             {
-                throw;
+                //throw;
+                return this.BadRequest("Objeto invalido");
             }
 
             var solicitudMapped = this.mapper.Map<Models.Internal.Solicitud>(baseSolicitudPatch);
@@ -107,11 +118,11 @@
         {
             var solicitud = await this.solicitudService.ConsultarSolicitud(id);
             return this.Ok(this.mapper.Map<Models.Resource.GrimorioAsignado>(solicitud));
-
         }
 
         [HttpDelete("{id}", Name = nameof(DeleteSolicitud))]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Produces("application/json")]
         public async Task<IActionResult> DeleteSolicitud(Guid id)
         {
