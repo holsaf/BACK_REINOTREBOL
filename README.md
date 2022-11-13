@@ -32,14 +32,25 @@ El API ReinoDelTrebol es un sistema que permite el registro, edicion, consulta y
 
 ![image](https://user-images.githubusercontent.com/87883786/201547917-c8798410-6e62-4138-9f61-6ef2a1d9f3f9.png)
 
-* La migracion creara de automatica la base de datos en la primera compilacion del proyecto.
+* La migracion creara de forma automatica la base de datos en la primera compilacion del proyecto.
 
 # Uso
 * Run dotnet run --project ReinoTrebolApi/ReinoTrebolApi.csproj o dando click en la siguiente opcion del Visual Studio:
-* 
+
 ![image](https://user-images.githubusercontent.com/87883786/201548512-216dc50c-ed82-4016-8863-2c920e4788c0.png)
 
 * Conectese a la API usando POSTMAN en el puerto https://localhost:7294.
+
+# API Endpoints
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
+| POST | /api/user/signup | To sign up a new user account |
+| POST | /api/user/login | To login an existing user account |
+| POST | /api/causes | To create a new cause |
+| GET | /api/causes | To retrieve all causes on the platform |
+| GET | /api/causes/:causeId | To retrieve details of a single cause |
+| PATCH | /api/causes/:causeId | To edit the details of a single cause |
+| DELETE | /api/causes/:causeId | To delete a single cause |
 
 # Versionado 
 Para todas las versiones disponibles, mira los tags en este repositorio.
