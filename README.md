@@ -1,7 +1,7 @@
-### ReinoDelTrebolAPI
+# ReinoDelTrebolAPI
 El API ReinoDelTrebol es un sistema que permite el registro, edicion, consulta y elimicacion de solicitudes de estudiantes de la academia de magia Reino del Trebol, durante el resgistro se hace una asignacion de aleatoria del Grimorio y una validacion de datos para su aprobacion o rechazo. Construida con .NET Core 6 y usa como motor de base de datos MySQL
 
-### Funciones de Soporte
+# Funciones de Soporte
 * El usuario puede enviar un solicitud de ingreso.
 * El usuario puede actualizar una solicitud de ingreso.
 * EL usuario puede actualizar el estado de un solicitud.
@@ -9,11 +9,11 @@ El API ReinoDelTrebol es un sistema que permite el registro, edicion, consulta y
 * El usuario puede consultar la asignacion de Grimario de la solicitud de ingreso.
 * EL usuario puede eliminar una solicitud de ingreso.
 
-### Pre-requisitos 
+# Pre-requisitos 
 * .NET Core 6
 * Local instance MySQL
 
-### Guia de Instalacion
+# Guia de Instalacion
 * Clone el repositorio git clone https://github.com/holsaf/ReinoDelTrebol.git.
 * Configure la conexion de la base de datos.
   1. Configure los datos de conexion en los "secretos de usuario" dando click derecho en ReinoTrebolApi.csproj.
@@ -34,17 +34,17 @@ El API ReinoDelTrebol es un sistema que permite el registro, edicion, consulta y
 
 * La migracion creara de automatica la base de datos en la primera compilacion del proyecto.
 
-### Uso
+# Uso
 * Run dotnet run --project ReinoTrebolApi/ReinoTrebolApi.csproj o dando click en la siguiente opcion del Visual Studio:
 * 
 ![image](https://user-images.githubusercontent.com/87883786/201548512-216dc50c-ed82-4016-8863-2c920e4788c0.png)
 
 * Conectese a la API usando POSTMAN en el puerto https://localhost:7294.
 
-### Versionado 
+# Versionado 
 Para todas las versiones disponibles, mira los tags en este repositorio.
 
-### Autores 
+# Autores 
 Holman Sanchez Fuentes
 
 
