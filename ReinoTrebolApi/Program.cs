@@ -1,13 +1,7 @@
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 using ReinoTrebolApi.Extensiones;
-using Newtonsoft.Json.Converters;
-using JsonConverter = Newtonsoft.Json.JsonConverter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,7 +52,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+// app.UseAuthorization();
 
 app.MapControllers();
 

@@ -1,5 +1,6 @@
 ﻿namespace ReinoTrebolApi.Controllers.Solicitudes
 {
+    using System;
     using AutoMapper;
     using FluentValidation;
     using Microsoft.AspNetCore.JsonPatch;
@@ -14,14 +15,21 @@
         private readonly ISolicitudService solicitudService;
         private readonly IMapper mapper;
         private readonly IValidator<SolicitudPost> validatorPost;
+        private readonly IValidator<Solicitud> validatorPut;
         private readonly IValidator<JsonPatchDocument<SolicitudPatch>> validatorPatch;
 
-        public SolicitudController(ISolicitudService solicitudService, IMapper mapper, IValidator<SolicitudPost> validatorPost, IValidator<JsonPatchDocument<SolicitudPatch>> validatorPatch)
+        public SolicitudController(
+            ISolicitudService solicitudService,
+            IMapper mapper,
+            IValidator<SolicitudPost> validatorPost,
+            IValidator<JsonPatchDocument<SolicitudPatch>> validatorPatch,
+            IValidator<Solicitud> validatorPut)
         {
             this.solicitudService = solicitudService;
             this.mapper = mapper;
             this.validatorPost = validatorPost;
             this.validatorPatch = validatorPatch;
+            this.validatorPut = validatorPut;
         }
 
         [HttpPost(Name = nameof(PostSolicitud))]
@@ -52,13 +60,22 @@
         [HttpPut(Name = nameof(PutSolicitud))]
         [ProducesResponseType(typeof(Solicitud), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Consumes("application/json")]
         [Produces("application/json")]
         public async Task<IActionResult> PutSolicitud([FromBody] Solicitud solicitud)
         {
-            if (!this.TryValidateModel(solicitud))
+            var validatorResult = this.validatorPut.Validate(solicitud);
+            if (!validatorResult.IsValid)
             {
-                return this.BadRequest();
+                return this.BadRequest(validatorResult.Errors);
+            }
+
+            var internalSolicitud = await this.solicitudService.ConsultarSolicitud(solicitud.IdSolicitud);
+
+            if (internalSolicitud == null)
+            {
+                return this.NotFound();
             }
 
             var solicitudMapped = this.mapper.Map<Models.Internal.Solicitud>(solicitud);
@@ -69,6 +86,8 @@
         [HttpPatch("{id}", Name = nameof(PatchSolicitud))]
         [ProducesResponseType(typeof(Solicitud), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Consumes("application/json-patch+json")]
         [Produces("application/json")]
         public async Task<IActionResult> PatchSolicitud(Guid id, [FromBody] JsonPatchDocument<SolicitudPatch> solicitudPatch)
@@ -79,21 +98,21 @@
                 return this.BadRequest(validatorResult.Errors);
             }
 
-            //if (!this.TryValidateModel(solicitudPatch))
-            //{
-            //    return this.BadRequest("Objeto invalido");
-            //}
-
             var internalSolicitud = await this.solicitudService.ConsultarSolicitud(id);
-            var baseSolicitudPatch = this.mapper.Map<Models.Resource.SolicitudPatch>(internalSolicitud);
+
+            if (internalSolicitud == null)
+            {
+                return this.NotFound();
+            }
+
+            var baseSolicitudPatch = this.mapper.Map<SolicitudPatch>(internalSolicitud);
             try
             {
                 solicitudPatch.ApplyTo(baseSolicitudPatch, this.ModelState);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //throw;
-                return this.BadRequest("Objeto invalido");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, e);
             }
 
             var solicitudMapped = this.mapper.Map<Models.Internal.Solicitud>(baseSolicitudPatch);
@@ -104,36 +123,56 @@
 
         [HttpGet(Name= nameof(GetSolicitudes))]
         [ProducesResponseType(typeof(SolicitudResponseCollection), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Produces("application/json")]
         public async Task<IActionResult> GetSolicitudes()
         {
             var solicitudes = await this.solicitudService.ConsultarSolicitudes();
+            if (solicitudes == null)
+            {
+                return this.NotFound();
+            }
+
             return this.Ok(this.mapper.Map<SolicitudResponseCollection>(solicitudes));
         }
 
         [HttpGet("grimorio/{id}")]
         [ProducesResponseType(typeof(GrimorioAsignado), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Produces("application/json")]
         public async Task<IActionResult> GetGrimorioById(Guid id)
         {
             var solicitud = await this.solicitudService.ConsultarSolicitud(id);
+            if (solicitud == null)
+            {
+                return this.NotFound();
+            }
+
             return this.Ok(this.mapper.Map<Models.Resource.GrimorioAsignado>(solicitud));
         }
 
         [HttpDelete("{id}", Name = nameof(DeleteSolicitud))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Produces("application/json")]
         public async Task<IActionResult> DeleteSolicitud(Guid id)
         {
+            var internalSolicitud = await this.solicitudService.ConsultarSolicitud(id);
+            if (internalSolicitud == null)
+            {
+                return this.NotFound();
+            }
+
             var result = await this.solicitudService.EliminarSolicitud(id);
+
             if (result)
             {
                 return this.Ok();
             }
             else
             {
-                return this.BadRequest();
+                return this.StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
     }

@@ -41,6 +41,7 @@
             services.AddScoped<ISolicitudService, SolicitudService>();
             services.AddScoped<IValidator<SolicitudPost>, SolicitudPostValidator>();
             services.AddScoped<IValidator<JsonPatchDocument<SolicitudPatch>>, SolicitudPatchValidator>();
+            services.AddScoped<IValidator<Solicitud>, SolicitudPutValidator>();
 
             // Configuracion de Auto Mapper 
             var mappingConfig = new MapperConfiguration(mc =>

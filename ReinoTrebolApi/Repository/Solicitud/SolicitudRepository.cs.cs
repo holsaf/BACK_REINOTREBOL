@@ -54,7 +54,7 @@
         {
             try
             {
-                return await this.reinoTrebolDbContext.Solicitud.FirstAsync(s => s.IdSolicitud == id);
+                return await this.reinoTrebolDbContext.Solicitud.FirstOrDefaultAsync(s => s.IdSolicitud == id);
             }
             catch (Exception)
             {

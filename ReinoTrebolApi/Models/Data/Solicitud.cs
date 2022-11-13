@@ -1,7 +1,6 @@
 ﻿namespace ReinoTrebolApi.Models.Data
 {
     using ReinoTrebolApi.Models.Enums;
-    using System.ComponentModel.DataAnnotations;
 
     public class Solicitud
     {

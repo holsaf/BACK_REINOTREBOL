@@ -12,6 +12,6 @@
 
         Task<Solicitud> ConsultarSolicitud(Guid id);
 
-        Task<Boolean> EliminarSolicitud(Guid id);
+        Task<bool> EliminarSolicitud(Guid id);
     }
 }

@@ -5,8 +5,9 @@
     public class ReinoTrebolDbContext : DbContext, IReinotrebolDbContext
     {
         public ReinoTrebolDbContext(DbContextOptions<ReinoTrebolDbContext> options)
-            : base(options) { }
-
+            : base(options)
+        {
+        }
 
         public DbSet<Solicitud> Solicitud { get; set; }
 

@@ -13,6 +13,5 @@
         public string Edad { get; set; }
 
         public AfinidadMagica AfinidadMagica { get; set; }
-
     }
 }
