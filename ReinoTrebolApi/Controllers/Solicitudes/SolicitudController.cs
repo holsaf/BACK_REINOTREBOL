@@ -8,7 +8,7 @@
     using ReinoTrebolApi.Services.Solicitud;
 
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/solicitud")]
     public class SolicitudController : Controller
     {
         private readonly ISolicitudService solicitudService;
@@ -25,6 +25,8 @@
         [HttpPost(Name = nameof(PostSolicitud))]
         [ProducesResponseType(typeof(Solicitud), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<IActionResult> PostSolicitud([FromBody] SolicitudPost solicitudPost)
         {
             var validatorResult = this.validator.Validate(solicitudPost);
@@ -43,12 +45,13 @@
 
             var solicitudCreated = await this.solicitudService.CargarSolicitud(solicitudMapped, true);
             return this.Created(nameof(this.PostSolicitud), this.mapper.Map<Solicitud>(solicitudCreated));
-
         }
 
         [HttpPut(Name = nameof(PutSolicitud))]
         [ProducesResponseType(typeof(Solicitud), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<IActionResult> PutSolicitud([FromBody] Solicitud solicitud)
         {
             if (!this.TryValidateModel(solicitud))
@@ -63,6 +66,7 @@
         [HttpPatch("{id}", Name = nameof(PatchEstado))]
         [ProducesResponseType(typeof(Solicitud), StatusCodes.Status200OK)]
         [Consumes("application/json-patch+json")]
+        [Produces("application/json")]
         public async Task<IActionResult> PatchEstado(Guid id, [FromBody] JsonPatchDocument<SolicitudPatch> solicitudPatch)
         {
             if (!this.TryValidateModel(solicitudPatch))
@@ -89,15 +93,16 @@
 
         [HttpGet(Name= nameof(GetSolicitudes))]
         [ProducesResponseType(typeof(SolicitudResponseCollection), StatusCodes.Status200OK)]
+        [Produces("application/json")]
         public async Task<IActionResult> GetSolicitudes()
         {
             var solicitudes = await this.solicitudService.ConsultarSolicitudes();
             return this.Ok(this.mapper.Map<SolicitudResponseCollection>(solicitudes));
         }
 
-
-        [HttpGet("Grimorio/{id}")]
-        [ProducesResponseType(typeof(GrimorioAsignado) , StatusCodes.Status200OK)]
+        [HttpGet("grimorio/{id}")]
+        [ProducesResponseType(typeof(GrimorioAsignado), StatusCodes.Status200OK)]
+        [Produces("application/json")]
         public async Task<IActionResult> GetGrimorioById(Guid id)
         {
             var solicitud = await this.solicitudService.ConsultarSolicitud(id);
@@ -107,6 +112,7 @@
 
         [HttpDelete("{id}", Name = nameof(DeleteSolicitud))]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [Produces("application/json")]
         public async Task<IActionResult> DeleteSolicitud(Guid id)
         {
             var result = await this.solicitudService.EliminarSolicitud(id);

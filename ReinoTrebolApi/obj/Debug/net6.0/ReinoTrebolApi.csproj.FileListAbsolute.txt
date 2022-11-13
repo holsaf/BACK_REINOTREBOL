@@ -45,3 +45,4 @@ C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\ref\R
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\stylecop.json
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.Newtonsoft.dll
