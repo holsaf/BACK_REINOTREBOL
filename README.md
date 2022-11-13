@@ -1,6 +1,6 @@
 # ReinoDelTrebolAPI
 
-El API ReinoDelTrebol es un sistema que permite el registro, edicion, consulta y elimicacion de solicitudes de estudiantes de la academia de magia Reino del Trebol, durante el resgistro se hace una asignacion de aleatoria del Grimorio y una validacion de datos para su aprobacion o rechazo. Construida con .NET Core 6 y usa como motor de base de datos MySQL.
+El API ReinoDelTrebol es un sistema que permite el registro, edicion, consulta y eliminacion de solicitudes de estudiantes de la academia de magia Reino del Trebol. Durante el registro se hace una asignacion aleatoria del Grimorio y una validacion de datos para su aprobacion o rechazo. Fue construida con el freamwork ASP.NET Core 6 y usa como motor de base de datos MySQL.
 
 # Funciones de Soporte
 
