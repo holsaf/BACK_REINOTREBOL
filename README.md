@@ -68,10 +68,6 @@ El API ReinoDelTrebol es un sistema que permite el registro, edicion, consulta y
 | PATCH | /api/solicitud/:Id | Actualizar el estado de una solicitud |
 | DELETE | /api/solicitud/:Id | Eliminar una solicitud |
 
-# Versionado 
-  
-  Para todas las versiones disponibles, mira los tags en este repositorio.
-
 # Autores 
   
   Holman Sanchez Fuentes
