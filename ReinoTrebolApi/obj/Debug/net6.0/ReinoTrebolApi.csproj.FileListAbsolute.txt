@@ -42,3 +42,5 @@ C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\refin
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\ReinoTrebolApi.pdb
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\ReinoTrebolApi.genruntimeconfig.cache
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\ref\ReinoTrebolApi.dll
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

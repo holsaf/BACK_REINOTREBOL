@@ -1,9 +1,14 @@
-﻿using ReinoTrebolApi.Models.Enums;
+﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using ReinoTrebolApi.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace ReinoTrebolApi.Models.Resource
 {
     public class SolicitudPost
     {
+        //[MaxLength(20)]
+        //[Required]
+        //[RegularExpression("[a-z]+")]
         public string Nombre { get; set; }
 
         public string Apellido { get; set; }

@@ -9,6 +9,13 @@ namespace ReinoTrebolApi.Services.Solicitud
     {
         private readonly ISolicitudRepository solicitudRepository;
         private readonly IMapper mapper;
+
+        public SolicitudService(ISolicitudRepository solicitudRepository, IMapper mapper)
+        {
+            this.solicitudRepository = solicitudRepository;
+            this.mapper = mapper;
+        }
+
         public async Task<Models.Internal.Solicitud> ActualizarSolicitud(Models.Internal.Solicitud solicitud)
         {
             var solicitudMapped = this.mapper.Map<Models.Data.Solicitud>(solicitud);

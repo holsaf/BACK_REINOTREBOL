@@ -3,14 +3,19 @@
 namespace ReinoTrebolApi.Extensiones
 {
     using AutoMapper;
+    using FluentValidation;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
     using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
     using ReinoTrebolApi.Controllers.Mappers;
     using ReinoTrebolApi.Models.Data.DbContext;
+    using ReinoTrebolApi.Models.Resource;
     using ReinoTrebolApi.Repository.Solicitud;
     using ReinoTrebolApi.Services.Mappers;
     using ReinoTrebolApi.Services.Solicitud;
+    using ReinoTrebolApi.Validator;
 
     public static class ServiceCollectionExtensions
     {
@@ -35,6 +40,7 @@ namespace ReinoTrebolApi.Extensiones
         {
             services.AddScoped<ISolicitudRepository, SolicitudRepository>();
             services.AddScoped<ISolicitudService, SolicitudService>();
+            services.AddScoped<IValidator<SolicitudPost>, SolicitudPostValidator>();
             // Configuracion de Auto Mapper 
             var mappingConfig = new MapperConfiguration(mc =>
             {

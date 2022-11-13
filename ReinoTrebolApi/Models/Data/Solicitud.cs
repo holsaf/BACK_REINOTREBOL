@@ -5,7 +5,6 @@ namespace ReinoTrebolApi.Models.Data
 {
     public class Solicitud
     {
-        [Key]
         public Guid IdSolicitud { get; set; }
 
         public string Nombre { get; set; }

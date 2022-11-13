@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using ReinoTrebolApi.Models.Resource;
@@ -12,11 +13,13 @@ namespace ReinoTrebolApi.Controllers.Solicitudes
     {
         private readonly ISolicitudService solicitudService;
         private readonly IMapper mapper;
+        private readonly IValidator<SolicitudPost> validator;
 
-        public SolicitudController(ISolicitudService solicitudService, IMapper mapper)
+        public SolicitudController(ISolicitudService solicitudService, IMapper mapper, IValidator<SolicitudPost> validator)
         {
             this.solicitudService = solicitudService;
             this.mapper = mapper;
+            this.validator = validator;
         }
 
         [HttpPost(Name = nameof(PostSolicitud))]
@@ -24,12 +27,15 @@ namespace ReinoTrebolApi.Controllers.Solicitudes
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PostSolicitud([FromBody] SolicitudPost solicitudPost)
         {
+            var validatorResult = this.validator.Validate(solicitudPost);
             if (solicitudPost == null)
             {
                 return this.BadRequest();
             }
             var solicitudMapped = this.mapper.Map<Models.Internal.Solicitud>(solicitudPost);
-            if (!this.TryValidateModel(solicitudPost))
+            //if (!this.TryValidateModel(solicitudPost))
+            
+            if(!validatorResult.IsValid)
             {
                 var solicitudRechazada = await this.solicitudService.CargarSolicitud(solicitudMapped, false);
                 return this.BadRequest(this.mapper.Map<Solicitud>(solicitudRechazada));
@@ -40,10 +46,10 @@ namespace ReinoTrebolApi.Controllers.Solicitudes
 
         }
 
-        [HttpPut(Name = nameof(UpdateSolicitud))]
+        [HttpPut(Name = nameof(PutSolicitud))]
         [ProducesResponseType(typeof(Solicitud), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdateSolicitud([FromBody] Solicitud solicitud)
+        public async Task<IActionResult> PutSolicitud([FromBody] Solicitud solicitud)
         {
             if (!this.TryValidateModel(solicitud))
             {
@@ -54,10 +60,10 @@ namespace ReinoTrebolApi.Controllers.Solicitudes
             return this.Ok(this.mapper.Map<Solicitud>(solicitudUpdated));
         }
 
-        [HttpPatch("{id}", Name = nameof(UpdateEstado))]
+        [HttpPatch("{id}", Name = nameof(PatchEstado))]
         [ProducesResponseType(typeof(Solicitud), StatusCodes.Status200OK)]
         [Consumes("application/json-patch+json")]
-        public async Task<IActionResult> UpdateEstado(Guid id, [FromBody] JsonPatchDocument<SolicitudPatch> solicitudPatch)
+        public async Task<IActionResult> PatchEstado(Guid id, [FromBody] JsonPatchDocument<SolicitudPatch> solicitudPatch)
         {
             if (!this.TryValidateModel(solicitudPatch))
             {
@@ -82,16 +88,16 @@ namespace ReinoTrebolApi.Controllers.Solicitudes
         }
 
         [HttpGet(Name= nameof(GetSolicitudes))]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SolicitudResponseCollection), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetSolicitudes()
         {
             var solicitudes = await this.solicitudService.ConsultarSolicitudes();
             return this.Ok(this.mapper.Map<SolicitudResponseCollection>(solicitudes));
         }
 
-        [HttpGet("{id}", Name = nameof(GetGrimorioById))]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [Route("GetGrimorio")]
+
+        [HttpGet("Grimorio/{id}")]
+        [ProducesResponseType(typeof(GrimorioAsignado) , StatusCodes.Status200OK)]
         public async Task<IActionResult> GetGrimorioById(Guid id)
         {
             var solicitud = await this.solicitudService.ConsultarSolicitud(id);

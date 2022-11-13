@@ -6,6 +6,7 @@ using ReinoTrebolApi.Extensiones;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using ReinoTrebolApi.Formatters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,22 +22,18 @@ builder.Services.AddServices();
 
 //var corsConfiguration = builder.Configuration.GetSection("Cors").Get<CorsConfiguration>();
 
-//builder.Services.AddControllers(options =>
-//{
-//    options.InputFormatters.Insert(0, JsonPatchInputFormatter.GetJsonPatchInputFormatter());
-//})
-//                .AddFluentValidation(
-//                fvc =>
-//                {
-//                    fvc.RegisterValidatorsFromAssemblyContaining<Program>();
-//                })
-//                .AddJsonOptions(options =>
-//                {
-//                    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-//                    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-//                    options.JsonSerializerOptions.WriteIndented = true;
-//                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-//                });
+builder.Services.AddMvc(options =>
+{
+    options.EnableEndpointRouting = false;
+    options.ReturnHttpNotAcceptable = true;
+    options.InputFormatters.Insert(0, JsonPatchInputFormatter.GetJsonPatchInputFormatter());
+}).AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+    options.JsonSerializerOptions.WriteIndented = true;
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 
 //builder.Services.AddFluentValidationAutoValidation();
 

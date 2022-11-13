@@ -11,7 +11,7 @@ using ReinoTrebolApi.Models.Data.DbContext;
 namespace ReinoTrebolApi.Migrations
 {
     [DbContext(typeof(ReinoTrebolDbContext))]
-    [Migration("20221112222340_InitialCreate")]
+    [Migration("20221113013448_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "J4wEANehxrnXSL4dDn8zSDCcPgqyjJT5/uZvEH2ND05cMUyyM02zMV/UUTC6unLhHG+1teu0tW3+RlYGVClCwg==",
+  "dgSpecHash": "LbgchB8x6GqvyyOopIZAlYburp5QKJjqrTDXxPC45PDrW3xQ3EFTSD1Afj8hKrXr1v/Ifq4G3psf70WheIG6eA==",
   "success": true,
   "projectFilePath": "C:\\Developer\\ReinoTrebolApi\\ReinoDelTrebol\\ReinoTrebolApi\\ReinoTrebolApi.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,7 @@
     "C:\\Users\\holtk\\.nuget\\packages\\microsoft.aspnetcore.mvc.abstractions\\2.2.0\\microsoft.aspnetcore.mvc.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\microsoft.aspnetcore.mvc.core\\2.2.0\\microsoft.aspnetcore.mvc.core.2.2.0.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\microsoft.aspnetcore.mvc.formatters.json\\2.2.0\\microsoft.aspnetcore.mvc.formatters.json.2.2.0.nupkg.sha512",
+    "C:\\Users\\holtk\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.3\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.3.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\microsoft.aspnetcore.responsecaching.abstractions\\2.2.0\\microsoft.aspnetcore.responsecaching.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\microsoft.aspnetcore.routing\\2.2.0\\microsoft.aspnetcore.routing.2.2.0.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\microsoft.aspnetcore.routing.abstractions\\2.2.0\\microsoft.aspnetcore.routing.abstractions.2.2.0.nupkg.sha512",
@@ -56,6 +57,7 @@
     "C:\\Users\\holtk\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\mysqlconnector\\2.1.2\\mysqlconnector.2.1.2.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\holtk\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.2\\pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",

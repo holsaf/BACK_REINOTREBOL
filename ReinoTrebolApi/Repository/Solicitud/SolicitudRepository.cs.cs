@@ -8,6 +8,11 @@
     {
         private readonly IReinotrebolDbContext reinoTrebolDbContext;
 
+        public SolicitudRepository(IReinotrebolDbContext reinoTrebolDbContext)
+        {
+            this.reinoTrebolDbContext = reinoTrebolDbContext;
+        }
+
         public async Task<Solicitud> ActualizarSolicitud(Solicitud solicitud)
         {
             try
