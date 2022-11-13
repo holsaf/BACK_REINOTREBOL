@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using ReinoTrebolApi.Models.Enums;
-using System.ComponentModel.DataAnnotations;
-
-namespace ReinoTrebolApi.Models.Resource
+﻿namespace ReinoTrebolApi.Models.Resource
 {
+    using ReinoTrebolApi.Models.Enums;
+
     public class SolicitudPost
     {
         public string Nombre { get; set; }

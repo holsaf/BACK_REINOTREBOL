@@ -45,16 +45,13 @@ namespace ReinoTrebolApi.Migrations
 
                     b.Property<string>("Identificacion")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("IdSolicitud");
-
-                    b.HasIndex("Identificacion")
-                        .IsUnique();
 
                     b.ToTable("Solicitud", "ReinoTrebol");
                 });

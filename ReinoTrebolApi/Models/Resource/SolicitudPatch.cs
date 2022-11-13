@@ -1,7 +1,7 @@
-﻿using ReinoTrebolApi.Models.Enums;
-
-namespace ReinoTrebolApi.Models.Resource
+﻿namespace ReinoTrebolApi.Models.Resource
 {
+    using ReinoTrebolApi.Models.Enums;
+
     public class SolicitudPatch
     {
         public string Nombre { get; set; }
@@ -17,6 +17,5 @@ namespace ReinoTrebolApi.Models.Resource
         public AfinidadMagica AfinidadMagica { get; set; }
 
         public GrimorioType Grimorio { get; set; }
-
     }
 }

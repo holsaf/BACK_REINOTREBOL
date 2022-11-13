@@ -1,12 +1,12 @@
-﻿using AutoMapper;
-using FluentValidation;
-using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc;
-using ReinoTrebolApi.Models.Resource;
-using ReinoTrebolApi.Services.Solicitud;
-
-namespace ReinoTrebolApi.Controllers.Solicitudes
+﻿namespace ReinoTrebolApi.Controllers.Solicitudes
 {
+    using AutoMapper;
+    using FluentValidation;
+    using Microsoft.AspNetCore.JsonPatch;
+    using Microsoft.AspNetCore.Mvc;
+    using ReinoTrebolApi.Models.Resource;
+    using ReinoTrebolApi.Services.Solicitud;
+
     [ApiController]
     [Route("api/[controller]")]
     public class SolicitudController : Controller
@@ -32,17 +32,17 @@ namespace ReinoTrebolApi.Controllers.Solicitudes
             {
                 return this.BadRequest();
             }
+
             var solicitudMapped = this.mapper.Map<Models.Internal.Solicitud>(solicitudPost);
-            //if (!this.TryValidateModel(solicitudPost))
-            
-            if(!validatorResult.IsValid)
+
+            if (!validatorResult.IsValid)
             {
                 var solicitudRechazada = await this.solicitudService.CargarSolicitud(solicitudMapped, false);
                 return this.BadRequest(this.mapper.Map<Solicitud>(solicitudRechazada));
             }
 
             var solicitudCreated = await this.solicitudService.CargarSolicitud(solicitudMapped, true);
-            return this.Created(nameof(PostSolicitud), this.mapper.Map<Solicitud>(solicitudCreated));
+            return this.Created(nameof(this.PostSolicitud), this.mapper.Map<Solicitud>(solicitudCreated));
 
         }
 
@@ -74,7 +74,7 @@ namespace ReinoTrebolApi.Controllers.Solicitudes
             var baseSolicitudPatch = this.mapper.Map<Models.Resource.SolicitudPatch>(internalSolicitud);
             try
             {
-                solicitudPatch.ApplyTo(baseSolicitudPatch, (Microsoft.AspNetCore.JsonPatch.Adapters.IObjectAdapter)this.ModelState);
+                solicitudPatch.ApplyTo(baseSolicitudPatch, this.ModelState);
             }
             catch (Exception)
             {
@@ -114,13 +114,10 @@ namespace ReinoTrebolApi.Controllers.Solicitudes
             {
                 return this.Ok();
             }
-            else 
+            else
             {
                 return this.BadRequest();
             }
         }
-
-
-
     }
 }

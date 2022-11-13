@@ -1,6 +1,5 @@
 ﻿namespace ReinoTrebolApi.Models.Enums
-{
-    public enum GrimorioType
+{ public enum GrimorioType
     {
         Sinceridad = 1,
         Esperanza = 2,

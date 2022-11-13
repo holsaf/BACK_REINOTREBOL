@@ -1,9 +1,8 @@
-﻿using FluentValidation;
-using ReinoTrebolApi.Models.Resource;
-using System.Runtime.CompilerServices;
-
-namespace ReinoTrebolApi.Validator
+﻿namespace ReinoTrebolApi.Validator
 {
+    using FluentValidation;
+    using ReinoTrebolApi.Models.Resource;
+
     public class SolicitudPostValidator : AbstractValidator<SolicitudPost>
     {
         public SolicitudPostValidator()

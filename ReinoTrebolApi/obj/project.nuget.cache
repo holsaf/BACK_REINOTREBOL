@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LbgchB8x6GqvyyOopIZAlYburp5QKJjqrTDXxPC45PDrW3xQ3EFTSD1Afj8hKrXr1v/Ifq4G3psf70WheIG6eA==",
+  "dgSpecHash": "iiMj9GXGrbGQke76jG5gN8mb2ufh7OnDo5kaL5gv6/LfOPlp5JweIODGF0jtF1HzsLZGDn0BXb12C+82ntyVZA==",
   "success": true,
   "projectFilePath": "C:\\Developer\\ReinoTrebolApi\\ReinoDelTrebol\\ReinoTrebolApi\\ReinoTrebolApi.csproj",
   "expectedPackageFiles": [
@@ -60,6 +60,7 @@
     "C:\\Users\\holtk\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.2\\pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
+    "C:\\Users\\holtk\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\holtk\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",

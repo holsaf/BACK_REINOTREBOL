@@ -1,11 +1,6 @@
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using ReinoTrebolApi.Extensiones;
-using System.Text.Json.Serialization;
 using System.Text.Json;
-using Microsoft.AspNetCore.Mvc.Formatters;
+using System.Text.Json.Serialization;
+using ReinoTrebolApi.Extensiones;
 using ReinoTrebolApi.Formatters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,10 +12,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddReinoTrebolDbContext(builder.Configuration.GetConnectionString("ReinoTrebolDatabase"));
-builder.Services.AddServices();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson();
 
-//var corsConfiguration = builder.Configuration.GetSection("Cors").Get<CorsConfiguration>();
+//Add DB Connection
+builder.Services.AddReinoTrebolDbContext(builder.Configuration.GetConnectionString("ReinoTrebolDatabase"));
+
+// Add config of scoped services and Mappers.
+builder.Services.AddServices();
 
 builder.Services.AddMvc(options =>
 {
@@ -35,13 +34,8 @@ builder.Services.AddMvc(options =>
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
 
-//builder.Services.AddFluentValidationAutoValidation();
-
-//builder.Services.AddValidatorsFromAssemblyContaining<Program>();
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

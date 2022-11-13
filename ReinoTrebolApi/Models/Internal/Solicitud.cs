@@ -1,7 +1,7 @@
-﻿using ReinoTrebolApi.Models.Enums;
-
-namespace ReinoTrebolApi.Models.Internal
+﻿namespace ReinoTrebolApi.Models.Internal
 {
+    using ReinoTrebolApi.Models.Enums;
+
     public class Solicitud
     {
         public Guid IdSolicitud { get; set; }

@@ -13,6 +13,5 @@
         Viento = 5,
 
         Tierra = 6,
-
     }
 }

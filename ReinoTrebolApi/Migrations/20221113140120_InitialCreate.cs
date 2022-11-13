@@ -25,7 +25,7 @@ namespace ReinoTrebolApi.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Apellido = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Identificacion = table.Column<string>(type: "varchar(255)", nullable: false)
+                    Identificacion = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Edad = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -38,13 +38,6 @@ namespace ReinoTrebolApi.Migrations
                     table.PrimaryKey("PK_Solicitud", x => x.IdSolicitud);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Solicitud_Identificacion",
-                schema: "ReinoTrebol",
-                table: "Solicitud",
-                column: "Identificacion",
-                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

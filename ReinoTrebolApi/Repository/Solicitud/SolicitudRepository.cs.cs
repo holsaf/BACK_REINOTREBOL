@@ -3,7 +3,6 @@
     using Microsoft.EntityFrameworkCore;
     using ReinoTrebolApi.Models.Data;
     using ReinoTrebolApi.Models.Data.DbContext;
-    using System.Linq;
 
     public class SolicitudRepository : ISolicitudRepository
     {
@@ -30,19 +29,12 @@
                 await this.reinoTrebolDbContext.SaveChangesAsync();
 
                 return solicitudToUpdate;
-             
             }
             catch (Exception)
-            {             
+            {
                 throw;
             }
-
         }
-
-        //public Task<Solicitud> ActualizarEstado (Solicitud solicitud)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public async Task<Solicitud> CargarSolicitud(Solicitud solicitud)
         {
@@ -51,7 +43,6 @@
                 await this.reinoTrebolDbContext.Solicitud.AddAsync(solicitud);
                 await this.reinoTrebolDbContext.SaveChangesAsync();
                 return solicitud;
-
             }
             catch (Exception)
             {
@@ -75,9 +66,7 @@
         {
             try
             {
-
                 return await this.reinoTrebolDbContext.Solicitud.ToListAsync<Solicitud>();
-
             }
             catch (Exception)
             {
@@ -89,7 +78,7 @@
         {
             try
             {
-                var solicitudDeleted = await  this.reinoTrebolDbContext.Solicitud.FirstAsync(s => s.IdSolicitud == id);
+                var solicitudDeleted = await this.reinoTrebolDbContext.Solicitud.FirstAsync(s => s.IdSolicitud == id);
                 this.reinoTrebolDbContext.Solicitud.Remove(solicitudDeleted);
                 await this.reinoTrebolDbContext.SaveChangesAsync();
                 return true;
@@ -98,7 +87,6 @@
             {
                 throw;
             }
-
         }
     }
 }

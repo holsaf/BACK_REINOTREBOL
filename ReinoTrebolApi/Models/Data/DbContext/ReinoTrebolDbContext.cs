@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace ReinoTrebolApi.Models.Data.DbContext
+﻿namespace ReinoTrebolApi.Models.Data.DbContext
 {
     using Microsoft.EntityFrameworkCore;
 
@@ -27,9 +25,7 @@ namespace ReinoTrebolApi.Models.Data.DbContext
             {
                 entity.ToTable("Solicitud");
                 entity.HasKey(id => id.IdSolicitud);
-                //entity.HasIndex(entity => new { entity.Identificacion }).IsUnique();
             });
-
         }
     }
 }

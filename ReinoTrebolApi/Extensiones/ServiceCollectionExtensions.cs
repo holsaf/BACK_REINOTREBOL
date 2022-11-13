@@ -1,11 +1,8 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace ReinoTrebolApi.Extensiones
+﻿namespace ReinoTrebolApi.Extensiones
 {
     using AutoMapper;
     using FluentValidation;
     using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
@@ -29,6 +26,7 @@ namespace ReinoTrebolApi.Extensiones
             .EnableDetailedErrors());
         }
 
+        // AutoBuild Db config
         public static void BuidDataBase(this WebApplication app)
         {
             using var scope = app.Services.CreateScope();
@@ -41,12 +39,12 @@ namespace ReinoTrebolApi.Extensiones
             services.AddScoped<ISolicitudRepository, SolicitudRepository>();
             services.AddScoped<ISolicitudService, SolicitudService>();
             services.AddScoped<IValidator<SolicitudPost>, SolicitudPostValidator>();
+
             // Configuracion de Auto Mapper 
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new ControllerMappingProfile());
                 mc.AddProfile(new ServiceMappingProfile());
-
             });
             var mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);

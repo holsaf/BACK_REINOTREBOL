@@ -1,10 +1,8 @@
-﻿
-
-using AutoMapper;
-using ReinoTrebolApi.Repository.Solicitud;
-
-namespace ReinoTrebolApi.Services.Solicitud
+﻿namespace ReinoTrebolApi.Services.Solicitud
 {
+    using AutoMapper;
+    using ReinoTrebolApi.Repository.Solicitud;
+
     public class SolicitudService : ISolicitudService
     {
         private readonly ISolicitudRepository solicitudRepository;
@@ -20,15 +18,10 @@ namespace ReinoTrebolApi.Services.Solicitud
         {
             var solicitudMapped = this.mapper.Map<Models.Data.Solicitud>(solicitud);
             var solicitudUpdated = await this.solicitudRepository.ActualizarSolicitud(solicitudMapped);
-            return  this.mapper.Map<Models.Internal.Solicitud>(solicitudUpdated); 
+            return this.mapper.Map<Models.Internal.Solicitud>(solicitudUpdated);
         }
 
-        //public Task<Models.Internal.Solicitud> ActualizarEstado (Models.Internal.Solicitud solicitud)
-        //{
-            
-        //}
-
-        public async Task<Models.Internal.Solicitud> CargarSolicitud(Models.Internal.Solicitud solicitud , Boolean estado)
+        public async Task<Models.Internal.Solicitud> CargarSolicitud(Models.Internal.Solicitud solicitud, bool estado)
         {
             var random = new Random();
             var solicitudMapped = this.mapper.Map<Models.Data.Solicitud>(solicitud);
@@ -44,14 +37,8 @@ namespace ReinoTrebolApi.Services.Solicitud
                 solicitudMapped.Estado = Models.Enums.EstadoSolicitud.Rechazada;
                 var solicitudRechazada = await this.solicitudRepository.CargarSolicitud(solicitudMapped);
                 return this.mapper.Map<Models.Internal.Solicitud>(solicitudRechazada);
-            }       
+            }
         }
-
-        //public async Task<Models.Internal.Solicitud> ConsultarAsignacionGrimorio(Guid id)
-        //{
-        //    var solicitudResult = await this.solicitudRepository.ConsultarSolicitud(id);
-        //    return solicitudResult.Grimorio;
-        //}
 
         public async Task<Models.Internal.Solicitud> ConsultarSolicitud(Guid id)
         {

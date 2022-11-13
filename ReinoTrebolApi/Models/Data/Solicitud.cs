@@ -1,8 +1,8 @@
-﻿using ReinoTrebolApi.Models.Enums;
-using System.ComponentModel.DataAnnotations;
-
-namespace ReinoTrebolApi.Models.Data
+﻿namespace ReinoTrebolApi.Models.Data
 {
+    using ReinoTrebolApi.Models.Enums;
+    using System.ComponentModel.DataAnnotations;
+
     public class Solicitud
     {
         public Guid IdSolicitud { get; set; }
@@ -20,7 +20,5 @@ namespace ReinoTrebolApi.Models.Data
         public AfinidadMagica AfinidadMagica { get; set; }
 
         public GrimorioType Grimorio { get; set; }
-
-
     }
 }

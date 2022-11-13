@@ -11,7 +11,7 @@ using ReinoTrebolApi.Models.Data.DbContext;
 namespace ReinoTrebolApi.Migrations
 {
     [DbContext(typeof(ReinoTrebolDbContext))]
-    [Migration("20221113013448_InitialCreate")]
+    [Migration("20221113140120_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,16 +47,13 @@ namespace ReinoTrebolApi.Migrations
 
                     b.Property<string>("Identificacion")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("IdSolicitud");
-
-                    b.HasIndex("Identificacion")
-                        .IsUnique();
 
                     b.ToTable("Solicitud", "ReinoTrebol");
                 });

@@ -2,7 +2,7 @@
 {
     public class SolicitudResponseCollection
     {
-        public List<Solicitud> Solicitudes  { get; set; }
+        public List<Solicitud> Solicitudes { get; set; }
 
     }
 }

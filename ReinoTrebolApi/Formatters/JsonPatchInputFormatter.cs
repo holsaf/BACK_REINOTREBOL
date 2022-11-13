@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.Extensions.Options;
-
-namespace ReinoTrebolApi.Formatters
+﻿namespace ReinoTrebolApi.Formatters
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Formatters;
+    using Microsoft.Extensions.Options;
+
     public static class JsonPatchInputFormatter
     {
         public static NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter()
