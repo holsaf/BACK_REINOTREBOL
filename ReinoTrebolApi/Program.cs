@@ -1,6 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using ReinoTrebolApi.Configuration;
 using ReinoTrebolApi.Extensiones;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,20 @@ builder.Services.AddReinoTrebolDbContext(builder.Configuration.GetConnectionStri
 
 // Add config of scoped services and Mappers.
 builder.Services.AddServices();
+
+// Add Cors
+var corsConfiguration = builder.Configuration.GetSection("Cors").Get<CorsConfiguration>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        name: corsConfiguration.Name,
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 
 builder.Services.AddControllers()
     .AddNewtonsoftJson(options =>
@@ -55,5 +70,7 @@ app.UseHttpsRedirection();
 // app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(corsConfiguration.Name);
 
 app.Run();

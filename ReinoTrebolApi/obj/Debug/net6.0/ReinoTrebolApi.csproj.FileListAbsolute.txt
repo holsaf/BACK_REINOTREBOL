@@ -1,4 +1,5 @@
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\appsettings.json
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\stylecop.json
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\ReinoTrebolApi.exe
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\ReinoTrebolApi.deps.json
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\ReinoTrebolApi.runtimeconfig.json
@@ -11,6 +12,7 @@ C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Fluen
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Humanizer.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -21,7 +23,9 @@ C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Micro
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\MySqlConnector.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.Newtonsoft.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -41,7 +45,3 @@ C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\refin
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\ReinoTrebolApi.pdb
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\ReinoTrebolApi.genruntimeconfig.cache
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\ref\ReinoTrebolApi.dll
-C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
-C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
-C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\stylecop.json
-C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.Newtonsoft.dll
