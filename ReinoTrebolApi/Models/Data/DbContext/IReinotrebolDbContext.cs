@@ -4,7 +4,7 @@
 
     public interface IReinotrebolDbContext
     {
-        DbSet<Solicitud> Solicitud { get; set; }
+        DbSet<Registration> Registration { get; set; }
 
         Task<int> SaveChangesAsync();
     }

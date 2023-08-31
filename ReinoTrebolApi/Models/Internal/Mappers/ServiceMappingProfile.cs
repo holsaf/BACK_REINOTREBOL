@@ -1,4 +1,4 @@
-﻿namespace ReinoTrebolApi.Services.Mappers
+﻿namespace ReinoTrebolApi.Models.Internal.Mappers
 {
     using AutoMapper;
 
@@ -6,7 +6,7 @@
     {
         public ServiceMappingProfile()
         {
-            this.CreateMap<Models.Internal.Solicitud, Models.Data.Solicitud>().ReverseMap();
+            this.CreateMap<Models.Internal.Registration, Models.Data.Registration>().ReverseMap();
         }
     }
 }

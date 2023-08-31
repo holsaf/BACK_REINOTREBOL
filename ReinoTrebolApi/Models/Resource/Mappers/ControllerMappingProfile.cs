@@ -1,4 +1,4 @@
-﻿namespace ReinoTrebolApi.Controllers.Mappers
+﻿namespace ReinoTrebolApi.Models.Resource.Mappers
 {
     using AutoMapper;
 
@@ -6,12 +6,12 @@
     {
         public ControllerMappingProfile()
         {
-            this.CreateMap<Models.Resource.SolicitudPost, Models.Internal.Solicitud>().ReverseMap();
-            this.CreateMap<Models.Resource.SolicitudPatch, Models.Internal.Solicitud>().ReverseMap();
-            this.CreateMap<Models.Resource.Solicitud, Models.Internal.Solicitud>().ReverseMap();
-            this.CreateMap<List<Models.Internal.Solicitud>, Models.Resource.SolicitudResponseCollection>()
-                .ForMember(dest => dest.Solicitudes, opt => opt.MapFrom(sol => sol));
-            this.CreateMap<Models.Internal.Solicitud, Models.Resource.GrimorioAsignado>().ReverseMap();
+            this.CreateMap<Models.Resource.RegistrationPost, Models.Internal.Registration>().ReverseMap();
+            this.CreateMap<Models.Resource.RegistrationPatch, Models.Internal.Registration>().ReverseMap();
+            this.CreateMap<Models.Resource.Registration, Models.Internal.Registration>().ReverseMap();
+            this.CreateMap<List<Models.Internal.Registration>, Models.Resource.RegistrationResponseCollection>()
+                .ForMember(dest => dest.Registrations, opt => opt.MapFrom(sol => sol));
+            this.CreateMap<Models.Internal.Registration, Models.Resource.SportChosen>().ReverseMap();
         }
     }
 }

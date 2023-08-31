@@ -9,7 +9,7 @@
         {
         }
 
-        public DbSet<Solicitud> Solicitud { get; set; }
+        public DbSet<Registration> Registration { get; set; }
 
         public Task<int> SaveChangesAsync()
         {
@@ -22,10 +22,10 @@
 
             modelBuilder.HasDefaultSchema("ReinoTrebol");
 
-            modelBuilder.Entity<Solicitud>(entity =>
+            modelBuilder.Entity<Registration>(entity =>
             {
-                entity.ToTable("Solicitud");
-                entity.HasKey(id => id.IdSolicitud);
+                entity.ToTable("Registration");
+                entity.HasKey(id => id.IdRegistration);
             });
         }
     }

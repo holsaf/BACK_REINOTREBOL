@@ -45,3 +45,8 @@ C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\refin
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\ReinoTrebolApi.pdb
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\ReinoTrebolApi.genruntimeconfig.cache
 C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\ref\ReinoTrebolApi.dll
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\staticwebassets\msbuild.ReinoTrebolApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\staticwebassets\msbuild.build.ReinoTrebolApi.props
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ReinoTrebolApi.props
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ReinoTrebolApi.props
+C:\Developer\ReinoTrebolApi\ReinoDelTrebol\ReinoTrebolApi\obj\Debug\net6.0\staticwebassets.pack.json

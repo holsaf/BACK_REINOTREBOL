@@ -7,12 +7,12 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-    using ReinoTrebolApi.Controllers.Mappers;
     using ReinoTrebolApi.Models.Data.DbContext;
     using ReinoTrebolApi.Models.Resource;
-    using ReinoTrebolApi.Repository.Solicitud;
-    using ReinoTrebolApi.Services.Mappers;
-    using ReinoTrebolApi.Services.Solicitud;
+    using ReinoTrebolApi.Repository.Registration;
+    using ReinoTrebolApi.Models.Internal.Mappers;
+    using ReinoTrebolApi.Models.Resource.Mappers;
+    using ReinoTrebolApi.Services.Registration;
     using ReinoTrebolApi.Validator;
 
     public static class ServiceCollectionExtensions
@@ -37,11 +37,11 @@
 
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<ISolicitudRepository, SolicitudRepository>();
-            services.AddScoped<ISolicitudService, SolicitudService>();
-            services.AddScoped<IValidator<SolicitudPost>, SolicitudPostValidator>();
-            services.AddScoped<IValidator<JsonPatchDocument<SolicitudPatch>>, SolicitudPatchValidator>();
-            services.AddScoped<IValidator<Solicitud>, SolicitudPutValidator>();
+            services.AddScoped<IRegistrationRepository, RegistrationRepository>();
+            services.AddScoped<IRegistrationService, RegistrationService>();
+            services.AddScoped<IValidator<RegistrationPost>, RegistrationPostValidator>();
+            services.AddScoped<IValidator<JsonPatchDocument<RegistrationPatch>>, RegistrationPatchValidator>();
+            services.AddScoped<IValidator<Registration>, RegistrationPutValidator>();
 
             // Configuracion de Auto Mapper 
             var mappingConfig = new MapperConfiguration(mc =>
