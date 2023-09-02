@@ -1,32 +1,33 @@
-# ReinoDelTrebolAPI
+# TrebolSchoolAPI
 
-El API ReinoDelTrebol es un sistema que permite el registro, edicion, consulta y eliminacion de solicitudes de estudiantes de la academia de magia Reino del Trebol. Durante el registro se hace una asignacion aleatoria del Grimorio y una validacion de datos para su aprobacion o rechazo. Fue construida con el freamwork ASP.NET Core 6 y usa como motor de base de datos MySQL.
+The TrebolSchool API is a web API which can save, edit, get and delete the Trebol school's student registration. During registration process, it does a random choice of a type sport for each student, and a data validation for its approved or reject. 
+This API was made with ASP.NET Core 6, and use as database engine MySQL.
 
-# Funciones de Soporte
+# Funcionalities aveilable.
 
-  * El usuario puede enviar un solicitud de ingreso.
-  * El usuario puede actualizar una solicitud de ingreso.
-  * EL usuario puede actualizar el estado de un solicitud.
-  * El usuario puede consultar todas las solicitudes registradas en la base de datos (aprobadas y rechazadas).
-  * El usuario puede consultar la asignacion de Grimario de la solicitud de ingreso.
-  * EL usuario puede eliminar una solicitud de ingreso.
+  * Users can save a registration.
+  * Users can update a registration.
+  * Users can update the status of a registration.
+  * Users can get all registrations saved on the database, both approved and reject. 
+  * Users can get the registration's sport chosen 
+  * Users can delete a registration.
 
-# Pre-requisitos 
+# Software required 
 
   * .NET Core 6
   
   * Local instance MySQL
 
 # Guia de Instalacion
-  * Clone el repositorio 
+  * Clone repository 
   
      ```
      git clone https://github.com/holsaf/ReinoDelTrebol.git.
      ```
      
-  * Configure la conexion de la base de datos.
+  * Set the database connection.
   
-  1. Configure los datos de conexion en los "secretos de usuario" dando click derecho en ReinoTrebolApi.csproj.
+   1. Set the connection credentials at "user secret", Configure los datos de conexion en los "secretos de usuario" dando click derecho en ReinoTrebolApi.csproj.
   
   ![image](https://user-images.githubusercontent.com/87883786/201547680-3c9696aa-a14b-401b-b583-b9658eb20a3f.png)
   
